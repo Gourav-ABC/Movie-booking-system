@@ -14,7 +14,11 @@ const Register = () => {
             alert('Registered successfully');
             navigate('/login');
         } catch (err) {
-            alert(err.response?.data?.error || 'Registration failed');
+            const errorResponse = err.response?.data;
+            const errorMessage = typeof errorResponse === 'string'
+                ? errorResponse
+                : errorResponse?.message || errorResponse?.error || 'Registration failed';
+            alert(errorMessage);
         }
     };
 
