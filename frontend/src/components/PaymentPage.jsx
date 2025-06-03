@@ -30,7 +30,7 @@ const PaymentPage = () => {
     };
 
     try {
-      const paymentResponse = await fetch("http://localhost:3000/api/payment", {
+      const paymentResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const PaymentPage = () => {
         paymentMethod: "dummy-card"
       };
 
-const bookingResponse = await fetch("http://localhost:3000/api/bookings", {
+const bookingResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/bookings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

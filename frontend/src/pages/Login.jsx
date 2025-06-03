@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.post('http://localhost:3000/api/login', form);
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, form);
 
             // Save only the token (required for protected routes)
             localStorage.setItem('user', JSON.stringify({

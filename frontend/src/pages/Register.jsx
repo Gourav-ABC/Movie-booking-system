@@ -10,7 +10,7 @@ const Register = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3000/api/register', form);
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, form);
             alert('Registered successfully');
             navigate('/login');
         } catch (err) {

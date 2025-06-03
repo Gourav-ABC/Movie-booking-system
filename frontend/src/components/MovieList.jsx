@@ -10,7 +10,7 @@ const MovieList = () => {
 
   const fetchMovies = async (page) => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/movies?page=${page}&limit=5`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/movies?page=${page}&limit=5`);
       setMovies(res.data.movies);
       setTotalPages(res.data.totalPages);
       setPage(res.data.currentPage);

@@ -17,7 +17,7 @@ const SeatBooking = () => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/shows/${showId}`)    
+    axios.get(`${process.env.REACT_APP_API_URL}/api/shows/${showId}`)    
       .then(res => setShow(res.data))
       .catch(err => console.error('Error fetching show:', err));
   }, [showId]);

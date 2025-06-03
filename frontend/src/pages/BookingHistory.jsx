@@ -11,7 +11,7 @@ const BookingHistory = () => {
     const fetchBookings = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:3000/api/bookings/user/history', {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/user/history`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -30,7 +30,7 @@ const BookingHistory = () => {
   const downloadTicket = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/ticket/${bookingId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/${bookingId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

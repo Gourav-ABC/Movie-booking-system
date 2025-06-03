@@ -10,11 +10,11 @@ const MovieDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/movies/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/movies/${id}`)
       .then(res => setMovie(res.data.movie))
       .catch(err => console.error('Error fetching movie:', err));
 
-    axios.get(`http://localhost:3000/api/shows/movie/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/shows/movie/${id}`)
       .then(res => setShows(res.data))
       .catch(err => console.error('Error fetching shows:', err));
   }, [id]);

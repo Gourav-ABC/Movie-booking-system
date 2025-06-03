@@ -13,7 +13,7 @@ function MovieForm({ movieId, onSuccess,onDelete }) {
   useEffect(() => {
     if (movieId) {
       setLoading(true);
-      axios.get(`http://localhost:3000/api/movies/${movieId}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/movies/${movieId}`)
         .then(res => {
           const movie = res.data.movie; //  assuming backend returns { movie: {...} }
           setTitle(movie.title || '');
@@ -46,10 +46,10 @@ function MovieForm({ movieId, onSuccess,onDelete }) {
 
     try {
       if (movieId) {
-        await axios.put(`http://localhost:3000/api/movies/${movieId}`, payload);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/movies/${movieId}`, payload);
         alert('Movie updated successfully');
       } else {
-        await axios.post('http://localhost:3000/api/movies', payload);
+        await axios.post('${process.env.REACT_APP_API_URL}/api/movies', payload);
         alert('Movie created successfully');
       }
 
@@ -66,7 +66,7 @@ function MovieForm({ movieId, onSuccess,onDelete }) {
     if(!window.confirm("Are you sure you want to delete this movie?")) return;
 
     try{
-      await axios.delete(`http://localhost:3000/api/movies/${movieId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/movies/${movieId}`);
       alert('Movie deleted successfully');
       if(onDelete) onDelete();
       } catch (error) {

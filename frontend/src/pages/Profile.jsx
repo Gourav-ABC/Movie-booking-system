@@ -7,7 +7,7 @@ const Profile = ({ token }) => {
 
   const handleFetch = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/profile", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/profile`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -20,7 +20,7 @@ function AdminDashboard() {
 
   const fetchRevenue = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/admin/total-revenue');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/total-revenue`);
       setRevenue(response.data.revenue);
     } catch (error) {
       console.error('Failed to fetch revenue:', error);
@@ -32,7 +32,7 @@ function AdminDashboard() {
 
   const fetchMovies = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/movies');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/movies`);
       console.log('Bookings:', res.data)
       setMovies(res.data.movies);
     } catch (error) {
@@ -41,7 +41,7 @@ function AdminDashboard() {
   };
   const fetchBookings = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/admin/bookings');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/bookings`);
       setBookings(res.data);
     } catch (err) {
       console.error('Failed to fetch bookings:', err);
@@ -56,7 +56,7 @@ function AdminDashboard() {
   const handleCancelBooking = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this booking?")) return;
     try {
-      await axios.delete(`http://localhost:3000/api/admin/cancel-booking/${id}`
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/admin/cancel-booking/${id}`
 
       );
 
